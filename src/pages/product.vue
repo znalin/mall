@@ -3,10 +3,10 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-13 15:14:50
+ * @LastEditTime: 2022-07-14 10:56:30
 -->
 <template>
-  <div></div>
+  <div>product</div>
 </template>
 <script>
 export default {

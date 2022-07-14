@@ -3,13 +3,13 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-14 10:51:27
+ * @LastEditTime: 2022-07-14 11:08:54
 -->
 <template>
-  <div>nav-header</div>
+  <div>order-header</div>
 </template>
 <script>
 export default {
-  name: 'nav-header',
+  name: 'order-header',
 }
 </script>

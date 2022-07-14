@@ -3,10 +3,10 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-13 15:11:36
+ * @LastEditTime: 2022-07-14 10:51:18
 -->
 <template>
-  <div></div>
+  <div>nav-footer</div>
 </template>
 <script>
 export default {
