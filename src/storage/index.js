@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:04:28
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-14 15:50:18
+ * @LastEditTime: 2022-07-14 18:23:30
  */
 const STORAGE_KEY = 'mall';
 export default{
@@ -44,6 +44,7 @@ export default{
   clear(key,module_name){
     let val = this.getStorage();
     if(module_name){
+      if(!val[module_name]) return;
       delete val[module_name][key]
     }else{
       delete val[key]
