@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-15 09:44:57
+ * @LastEditTime: 2022-07-15 10:32:25
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -12,7 +12,14 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 // import env from './env'
 
-
+// 制定开关，可以控制是否mock
+const mock = false
+if(mock){
+  // import是预加载，即项目一开始就加载,这样无论mock是true还是false
+  // 都会加载mock,去拦截请求，使得所有请求都用mock
+  // require是代码执行需要加载才加载
+    require('./mock/api')
+}
 
 // axios基础值
 // 根据前端的跨域方式做调整
