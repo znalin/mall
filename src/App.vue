@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-15 10:08:55
+ * @LastEditTime: 2022-07-15 16:48:16
 -->
 <template>
   <div id="app">
@@ -20,22 +20,12 @@ export default {
       res: {},
     }
   },
-  mounted() {
-    // mock  ---json方式
-    this.axios.get('/mock/user/login.json').then((res) => {
-      this.res = res
-    })
-  },
+  mounted() {},
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/scss/reset.scss';
+/* @import './assets/scss/config.scss'; */
+/* @import './assets/scss/button.scss'; */
 </style>
