@@ -3,14 +3,14 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-14 18:21:19
+ * @LastEditTime: 2022-07-15 09:44:57
  */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import env from './env'
+// import env from './env'
 
 
 
@@ -19,7 +19,7 @@ import env from './env'
 // cors jsonp   前端域名和后端不同： 'http://www.baidu.com'
 // 接口代理：当前接口域名和前端域名一致  ： '/api'
 // axios.defaults.baseURL = '/api'
-axios.defaults.baseURL = env.baseURL
+// axios.defaults.baseURL = env.baseURL
 
 // 超时
 axios.defaults.timeout = 8000

@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-13 14:58:12
+ * @LastEditTime: 2022-07-15 10:08:55
 -->
 <template>
   <div id="app">
@@ -15,6 +15,17 @@
 export default {
   name: 'App',
   components: {},
+  data() {
+    return {
+      res: {},
+    }
+  },
+  mounted() {
+    // mock  ---json方式
+    this.axios.get('/mock/user/login.json').then((res) => {
+      this.res = res
+    })
+  },
 }
 </script>
 
