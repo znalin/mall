@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-15 10:32:25
+ * @LastEditTime: 2022-07-18 11:21:05
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -25,7 +25,7 @@ if(mock){
 // 根据前端的跨域方式做调整
 // cors jsonp   前端域名和后端不同： 'http://www.baidu.com'
 // 接口代理：当前接口域名和前端域名一致  ： '/api'
-// axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = '/api'
 // axios.defaults.baseURL = env.baseURL
 
 // 超时

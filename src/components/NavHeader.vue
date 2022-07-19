@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-15 18:27:48
+ * @LastEditTime: 2022-07-19 09:38:06
 -->
 <template>
   <div class="header">
@@ -16,9 +16,10 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="topbar-user">
-          <a href="javascript:;">登陆</a>
-          <a href="javascript:;">注册</a>
-          <a href="javascript:;" class="my-cart"
+          <a href="javascript:;" v-if="username">{{ username }}</a>
+          <a href="javascript:;" v-if="!username" @click="login">登陆</a>
+          <a href="javascript:;" v-if="username">我的订单</a>
+          <a href="javascript:;" class="my-cart" @click="goToCart"
             ><span class="icon-cart"></span>购物车</a
           >
         </div>
@@ -32,15 +33,141 @@
         <div class="header-menu">
           <div class="item-menu">
             <span>小米手机</span>
-            <div class="children"></div>
+            <div class="children">
+              <ul>
+                <li
+                  class="product"
+                  v-for="(item, index) in phoneList"
+                  :key="index"
+                >
+                  <a :herf="'/#/product/' + item.id" target="_blank">
+                    <div class="pro-img">
+                      <img :src="item.mainImage" :alt="item.subtitle" />
+                    </div>
+                    <div class="pro-name">{{ item.name }}</div>
+                    <div class="pro-price">{{ item.price | currency }}</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="item-menu">
             <span>RedMin红米</span>
-            <div class="children"></div>
+            <div class="children">
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-1.png" />
+                  </div>
+                  <div class="pro-name">小米CC9</div>
+                  <div class="pro-price">1799</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-2.png" />
+                  </div>
+                  <div class="pro-name">小米CC9</div>
+                  <div class="pro-price">1799</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-3.png" />
+                  </div>
+                  <div class="pro-name">小米CC9</div>
+                  <div class="pro-price">1799</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-4.png" />
+                  </div>
+                  <div class="pro-name">小米CC9</div>
+                  <div class="pro-price">1799</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-5.png" />
+                  </div>
+                  <div class="pro-name">小米CC9</div>
+                  <div class="pro-price">1799</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-6.png" />
+                  </div>
+                  <div class="pro-name">小米CC9</div>
+                  <div class="pro-price">1799</div>
+                </a>
+              </li>
+            </div>
           </div>
           <div class="item-menu">
             <span>电视</span>
-            <div class="children"></div>
+            <div class="children">
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-3-1.jpg" />
+                  </div>
+                  <div class="pro-name">小米壁画电视</div>
+                  <div class="pro-price">699</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-3-2.jpg" />
+                  </div>
+                  <div class="pro-name">小米全面电视</div>
+                  <div class="pro-price">1999</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-3-3.png" />
+                  </div>
+                  <div class="pro-name">小米壁画电视</div>
+                  <div class="pro-price">699</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-3-4.jpg" />
+                  </div>
+                  <div class="pro-name">小米壁画电视</div>
+                  <div class="pro-price">699</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-3-5.jpg" />
+                  </div>
+                  <div class="pro-name">小米壁画电视</div>
+                  <div class="pro-price">699</div>
+                </a>
+              </li>
+              <li class="product">
+                <a herf="" target="_blank">
+                  <div class="pro-img">
+                    <img src="/imgs/nav-img/nav-3-6.jpg" />
+                  </div>
+                  <div class="pro-name">小米壁画电视</div>
+                  <div class="pro-price">699</div>
+                </a>
+              </li>
+            </div>
           </div>
         </div>
         <div class="header-search">
@@ -56,11 +183,50 @@
 <script>
 export default {
   name: 'nav-header',
+  data() {
+    return {
+      username: 'jack',
+      phoneList: [],
+    }
+  },
+  filters: {
+    currency(val) {
+      if (!val) return '0.00'
+      return '￥' + val.toFixed(2) + '元'
+    },
+  },
+  mounted() {
+    this.getProductList()
+  },
+  methods: {
+    // 获取头部数据
+    getProductList() {
+      this.axios
+        .get('/products', {
+          params: {
+            categoryId: '100012',
+            pageSize: 6,
+          },
+        })
+        .then((res) => {
+          this.phoneList = res.list
+        })
+    },
+    // 跳转到购物车
+    goToCart() {
+      this.$router.push('/cart')
+    },
+    // 跳转到登陆页
+    login() {
+      this.$router.push('/login')
+    },
+  },
 }
 </script>
 <style lang="scss">
 @import '../assets/scss/base.scss';
-
+@import '../assets/scss/mixin.scss';
+@import '../assets/scss/config.scss';
 .header {
   .nav-topbar {
     height: 39px;
@@ -68,9 +234,7 @@ export default {
     background-color: #333333;
     color: #b0b0b0;
     .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex();
       a {
         display: inline-block;
         color: #b0b0b0;
@@ -82,11 +246,7 @@ export default {
         text-align: center;
         color: #fff;
         .icon-cart {
-          display: inline-block;
-          width: 16px;
-          height: 12px;
-          background: url('/imgs/icon-cart-checked.png') no-repeat center;
-          background-size: contain;
+          @include bgImg(16px, 12px, '/imgs/icon-cart-checked.png');
           margin-right: 4px;
         }
       }
@@ -95,9 +255,8 @@ export default {
   .nav-header {
     .container {
       height: 112px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: relative;
+      @include flex();
       .header-logo {
         display: inline-block;
         width: 55px;
@@ -109,20 +268,13 @@ export default {
           height: 55px;
           &::before {
             content: '';
-            display: inline-block;
-            width: 55px;
-            height: 55px;
-            background: url('/imgs/mi-logo.png') no-repeat center;
-            background-size: contain;
+            @include bgImg(55px, 55px, '/imgs/mi-logo.png', 55px);
             transition: margin 0.2s;
           }
           &::after {
             content: '';
             display: inline-block;
-            width: 55px;
-            height: 55px;
-            background: url('/imgs/mi-home.png') no-repeat center;
-            background-size: contain;
+            @include bgImg(55px, 55px, '/imgs/mi-home.png', 55px);
           }
           &:hover::before {
             margin-left: -55px;
@@ -145,6 +297,69 @@ export default {
             cursor: pointer;
           }
           &:hover {
+            color: $colorA;
+            .children {
+              height: 220px;
+              opacity: 1;
+              transition: height 0.5s;
+            }
+          }
+          .children {
+            position: absolute;
+            top: 112px;
+            left: 0;
+            width: 1226px;
+            height: 220px;
+            border-top: 1px solid #e5e5e5;
+            box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
+            // z-index: 10;
+            // background-color: #fff;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+
+            .product {
+              float: left;
+              width: 16.6%;
+              height: 220px;
+              font-size: 12px;
+              line-height: 12px;
+              text-align: center;
+              position: relative;
+              &::before {
+                content: '';
+                position: absolute;
+                top: 28px;
+                right: 0;
+                border-left: 1px solid $colorF;
+                height: 100px;
+                width: 1px;
+              }
+              &:last-child:before {
+                display: none;
+              }
+
+              a {
+                display: inline-block;
+              }
+              img {
+                height: 111px;
+                width: auto;
+                margin-top: 26px;
+              }
+              .pro-img {
+                height: 137px;
+              }
+              .pro-name {
+                font-weight: bold;
+                margin-top: 19px;
+                margin-bottom: 8px;
+                color: $colorB;
+              }
+              .pro-price {
+                color: $colorA;
+              }
+            }
           }
         }
       }
@@ -164,11 +379,7 @@ export default {
             padding-left: 14px;
           }
           a {
-            display: inline-block;
-            height: 18px;
-            width: 18px;
-            background: url('/imgs/icon-search.png') no-repeat center;
-            background-size: 18px;
+            @include bgImg(18px, 18px, '/imgs/icon-search.png', 18px);
             margin-left: 17px;
           }
         }

@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 10:25:52
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-15 16:22:30
+ * @LastEditTime: 2022-07-18 11:12:34
  */
 module.exports={
 
@@ -16,7 +16,7 @@ module.exports={
     proxy:{
       // 当访问/api  执行拦截，代理到慕课网/b,内部访问慕课网
       '/api':{
-        target:'https://www.imooc.com', // /b网站头部主要url
+        target:'http://mall-pre.springboot.cn', // /b网站头部主要url
         changeOrigin:true, // 我/a --在上面访问/a,/a迷惑变成/b---去访问/b
         pathRewrite:{
           '/api':''
