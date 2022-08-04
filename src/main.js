@@ -3,13 +3,14 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-18 11:21:05
+ * @LastEditTime: 2022-08-03 17:36:04
  */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
 // import env from './env'
 
 // 制定开关，可以控制是否mock

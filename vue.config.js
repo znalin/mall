@@ -3,10 +3,9 @@
  * @Author: znalin
  * @Date: 2022-07-13 10:25:52
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-18 11:12:34
+ * @LastEditTime: 2022-08-03 17:03:10
  */
 module.exports={
-
   devServer:{
     // 本地访问主机  /a
     host:'localhost',

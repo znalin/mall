@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-07-19 09:38:06
+ * @LastEditTime: 2022-08-01 18:21:28
 -->
 <template>
   <div class="header">
@@ -312,8 +312,8 @@ export default {
             height: 220px;
             border-top: 1px solid #e5e5e5;
             box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
-            // z-index: 10;
-            // background-color: #fff;
+            z-index: 10;
+            background-color: #fff;
             height: 0;
             opacity: 0;
             overflow: hidden;
