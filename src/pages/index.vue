@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-04 15:00:18
+ * @LastEditTime: 2022-08-05 14:39:58
 -->
 <template>
   <div class="index">
@@ -58,10 +58,38 @@
         </swiper>
       </div>
       <!-- 广告位 -->
-      <div class="ads-box"></div>
-      <div class="banner"></div>
-      <!-- 商品列表 -->
-      <div class="product-box"></div>
+      <div class="ads-box">
+        <a :href="'/#/product' + item.id" v-for="item in adsList" :key="item.id"
+          ><img :src="item.img"
+        /></a>
+      </div>
+      <div class="banner">
+        <a href="'/#/product/30'"><img src="/imgs/banner-1.png" /></a>
+      </div>
+    </div>
+    <!-- 商品列表 -->
+    <div class="product-box">
+      <div class="container">
+        <h2>手机</h2>
+        <div class="wrapper">
+          <div class="banner-left">
+            <a href="/#/product/35"><img src="/imgs/mix-alpha.jpg" /></a>
+          </div>
+          <div class="list-box">
+            <div class="list" v-for="(item, index) in phoneList" :key="index">
+              <div class="item" v-for="(i, y) in item" :key="i.id">
+                <span :class="{ 'new-pro': y % 2 == 0 }">新品</span>
+                <div class="item-img"><img :src="i.mainImage" /></div>
+                <div class="item-info">
+                  <h3>{{ i.name }}</h3>
+                  <p>{{ i.subtitle }}</p>
+                  <p class="price">{{ i.price }}元</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <service-bar></service-bar>
   </div>
@@ -257,7 +285,44 @@ export default {
           },
         ],
       ],
+      adsList: [
+        {
+          id: 33,
+          img: '/imgs/ads/ads-1.png',
+        },
+        {
+          id: 48,
+          img: '/imgs/ads/ads-2.jpg',
+        },
+        {
+          id: 45,
+          img: '/imgs/ads/ads-3.png',
+        },
+        {
+          id: 47,
+          img: '/imgs/ads/ads-4.jpg',
+        },
+      ],
+      phoneList: [],
     }
+  },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    init() {
+      this.axios
+        .get('/products', {
+          params: {
+            categoryId: 100012,
+            pageSize: 14,
+          },
+        })
+        .then((res) => {
+          res.list = res.list.slice(6, 14)
+          this.phoneList = [res.list?.slice(0, 4), res.list?.slice(4, 8)]
+        })
+    },
   },
 }
 </script>
@@ -337,6 +402,100 @@ export default {
                     vertical-align: middle;
                     margin-right: 15px;
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .ads-box {
+    @include flex();
+    margin-top: 14px;
+    margin-bottom: 41px;
+    a {
+      width: 296px;
+      height: 167px;
+    }
+  }
+  .banner {
+    margin-bottom: 50px;
+  }
+  .product-box {
+    background-color: $colorJ;
+    padding: 30px 0 50px;
+    h2 {
+      font-size: $fontF;
+      height: 21px;
+      line-height: 21px;
+      color: $colorB;
+      margin-bottom: 20px;
+    }
+    .wrapper {
+      display: flex;
+      .banner-left {
+        margin-right: 16px;
+        img {
+          width: 224px;
+          height: 619px;
+        }
+      }
+      .list-box {
+        .list {
+          @include flex();
+          width: 986px;
+          margin-bottom: 14px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .item {
+            width: 236px;
+            height: 302px;
+            background-color: $colorG;
+            text-align: center;
+            span {
+              display: inline-block;
+              width: 67px;
+              height: 24px;
+              line-height: 24px;
+              color: #fff;
+              font-size: 14px;
+              &.new-pro {
+                background-color: #7ece68;
+              }
+              &.kill-pro {
+                background-color: #e82626;
+              }
+            }
+            .item-img {
+              img {
+                height: 195px;
+                width: 100%;
+              }
+            }
+            .item-info {
+              h3 {
+                font-size: $fontJ;
+                color: $colorB;
+                line-height: $fontJ;
+                font-weight: bold;
+              }
+              P {
+                color: $colorD;
+                line-height: 13px;
+                margin: 6px auto 13px;
+              }
+              .price {
+                color: #f20a0a;
+                font-size: $fontJ;
+                font-weight: bold;
+                cursor: pointer;
+                &::after {
+                  content: '';
+                  margin-left: 5px;
+                  vertical-align: middle;
+                  @include bgImg(22px, 22px, '/imgs/icon-cart-hover.png');
                 }
               }
             }
