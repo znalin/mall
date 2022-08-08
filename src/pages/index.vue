@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-05 17:23:55
+ * @LastEditTime: 2022-08-08 18:24:46
 -->
 <template>
   <div class="index">
@@ -83,7 +83,7 @@
                 <div class="item-info">
                   <h3>{{ i.name }}</h3>
                   <p>{{ i.subtitle }}</p>
-                  <p class="price">{{ i.price }}元</p>
+                  <p class="price" @click="addCart">{{ i.price }}元</p>
                 </div>
               </div>
             </div>
@@ -95,9 +95,11 @@
     <modal
       title="提示"
       sureText="查看购物车"
-      btnText="1"
+      btnType="1"
       modalType="middle"
-      :showModal="true"
+      :showModal="showModal"
+      @submit="goToCart"
+      @cancel="showModal = false"
     >
       <template v-slot:body><p>商品添加成功！</p></template>
     </modal>
@@ -315,10 +317,12 @@ export default {
         },
       ],
       phoneList: [],
+      showModal: false,
     }
   },
   mounted() {
     this.init()
+    this.addCart()
   },
   methods: {
     init() {
@@ -333,6 +337,20 @@ export default {
           res.list = res.list.slice(6, 14)
           this.phoneList = [res.list?.slice(0, 4), res.list?.slice(4, 8)]
         })
+    },
+    addCart() {
+      this.showModal = true
+      return
+      //   this.axios
+      //     .post('/carts', {
+      //       productId: id,
+      //       selected: true,
+      //     })
+      //     .then(() => {})
+      //     .catch(() => {})
+    },
+    goToCart() {
+      this.$router.push('/cart')
     },
   },
 }
