@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-05 14:39:58
+ * @LastEditTime: 2022-08-05 17:23:55
 -->
 <template>
   <div class="index">
@@ -92,10 +92,20 @@
       </div>
     </div>
     <service-bar></service-bar>
+    <modal
+      title="提示"
+      sureText="查看购物车"
+      btnText="1"
+      modalType="middle"
+      :showModal="true"
+    >
+      <template v-slot:body><p>商品添加成功！</p></template>
+    </modal>
   </div>
 </template>
 <script>
 import ServiceBar from '../components/ServiceBar.vue'
+import Modal from '../components/Modal.vue'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 export default {
@@ -104,6 +114,7 @@ export default {
     ServiceBar,
     Swiper,
     SwiperSlide,
+    Modal,
   },
   directives: {
     swiper: directive,

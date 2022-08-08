@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-08-05 14:42:24
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-05 15:04:06
+ * @LastEditTime: 2022-08-08 17:14:16
 -->
 <template>
   <div class="modal" v-show="showModal">
@@ -19,8 +19,10 @@
         <slot name="body"></slot>
       </div>
       <div class="modal-footer">
-        <a href="javascript:;" class="btn">确定</a>
-        <a href="javascript:;" class="btn">取消</a>
+        <div class="btn-group">
+          <a href="javascript:;" class="btn">确定</a>
+          <a href="javascript:;" class="btn btn-default">取消</a>
+        </div>
       </div>
     </div>
   </div>
@@ -53,3 +55,8 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+@import './../assets/scss/config.scss';
+@import './../assets/scss/mixin.scss';
+@import './../assets/scss/modal.scss';
+</style>

@@ -28,9 +28,9 @@
       font-size:$fontI;
       .icon-close{
         @include positionImg(absolute,23px,25px,14px,14px,'/imgs/icon-close.png');
-        transition: transform .3s;
+        transition: transform .3s; // 过度
         &:hover{
-          transform: scale(1.5);
+          transform: scale(1.5);   // 放大
         }
       }
     }
