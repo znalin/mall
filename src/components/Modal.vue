@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-08-05 14:42:24
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-08 18:26:21
+ * @LastEditTime: 2022-08-08 18:31:17
 -->
 <template>
   <transition name="slide">
@@ -13,7 +13,7 @@
       <!-- 弹框 -->
       <div class="modal-dialog">
         <div class="modal-header">
-          <span>标题</span>
+          <span>{{ title }}</span>
           <a
             href="javascript:;"
             class="icon-close"
@@ -29,22 +29,24 @@
             class="btn"
             v-if="btnType == 1"
             @click="$emit('submit')"
-            >确定</a
+            >{{ sureText }}</a
           >
           <a
             href="javascript:;"
             class="btn btn-default"
             v-if="btnType == 2"
             @click="$emit('cancel')"
-            >取消</a
+            >{{ cancelText }}</a
           >
           <div class="btn-group" v-if="btnType == 3">
-            <a href="javascript:;" class="btn" @click="$emit('submit')">确定</a>
+            <a href="javascript:;" class="btn" @click="$emit('submit')">{{
+              sureText
+            }}</a>
             <a
               href="javascript:;"
               class="btn btn-default"
               @click="$emit('cancel')"
-              >取消</a
+              >{{ cancelText }}</a
             >
           </div>
         </div>

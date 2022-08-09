@@ -3,13 +3,22 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-03 17:36:04
+ * @LastEditTime: 2022-08-09 11:01:20
  */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Vant,{Lazyload} from 'vant';
+import 'vant/lib/index.css'
+Vue.use(Vant);
+Vue.use(Lazyload,
+  {
+    loading:'/imgs/loading-svg/loading-bars.svg'
+  });
+
+
 
 // import env from './env'
 
@@ -49,11 +58,11 @@ axios.interceptors.response.use(function(response){
   }
 
 })
-
 Vue.config.productionTip = false
 // VueAxios可以将axios挂载在实例上，以后用this调用
 // 而不是每个页面都要独自引入，再使用
 Vue.use(VueAxios,axios)
+
 new Vue({
   router,
   render: h => h(App),

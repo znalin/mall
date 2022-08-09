@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-08 18:24:46
+ * @LastEditTime: 2022-08-09 10:58:33
 -->
 <template>
   <div class="index">
@@ -60,11 +60,11 @@
       <!-- 广告位 -->
       <div class="ads-box">
         <a :href="'/#/product' + item.id" v-for="item in adsList" :key="item.id"
-          ><img :src="item.img"
+          ><img v-lazy="item.img"
         /></a>
       </div>
       <div class="banner">
-        <a href="'/#/product/30'"><img src="/imgs/banner-1.png" /></a>
+        <a href="'/#/product/30'"><img v-lazy="'/imgs/banner-1.png'" /></a>
       </div>
     </div>
     <!-- 商品列表 -->
@@ -322,7 +322,6 @@ export default {
   },
   mounted() {
     this.init()
-    this.addCart()
   },
   methods: {
     init() {
@@ -340,7 +339,7 @@ export default {
     },
     addCart() {
       this.showModal = true
-      return
+      // return
       //   this.axios
       //     .post('/carts', {
       //       productId: id,
@@ -361,16 +360,7 @@ export default {
 .index {
   .swiper-box {
     position: relative;
-    .swiper-container {
-      height: 451px;
-      .swiper-button-prev {
-        left: 274px;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
+
     .nav-menu {
       position: absolute;
       width: 264px;
@@ -433,6 +423,16 @@ export default {
                   }
                 }
               }
+            }
+          }
+          .swiper-container {
+            height: 451px;
+            .swiper-button-prev {
+              left: 274px;
+            }
+            img {
+              width: 100%;
+              height: 100%;
             }
           }
         }

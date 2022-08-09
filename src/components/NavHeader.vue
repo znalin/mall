@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-01 18:21:28
+ * @LastEditTime: 2022-08-09 17:20:49
 -->
 <template>
   <div class="header">
@@ -42,7 +42,7 @@
                 >
                   <a :herf="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
-                      <img :src="item.mainImage" :alt="item.subtitle" />
+                      <img v-lazy="item.mainImage" :alt="item.subtitle" />
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
                     <div class="pro-price">{{ item.price | currency }}</div>
@@ -57,7 +57,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-1.png" />
+                    <img v-lazy="'/imgs/nav-img/nav-1.png'" />
                   </div>
                   <div class="pro-name">小米CC9</div>
                   <div class="pro-price">1799</div>
@@ -66,7 +66,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-2.png" />
+                    <img v-lazy="'/imgs/nav-img/nav-2.png'" />
                   </div>
                   <div class="pro-name">小米CC9</div>
                   <div class="pro-price">1799</div>
@@ -75,7 +75,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-3.png" />
+                    <img v-lazy="'/imgs/nav-img/nav-3.png'" />
                   </div>
                   <div class="pro-name">小米CC9</div>
                   <div class="pro-price">1799</div>
@@ -84,7 +84,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-4.png" />
+                    <img v-lazy="'/imgs/nav-img/nav-4.png'" />
                   </div>
                   <div class="pro-name">小米CC9</div>
                   <div class="pro-price">1799</div>
@@ -93,7 +93,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-5.png" />
+                    <img v-lazy="'/imgs/nav-img/nav-5.png'" />
                   </div>
                   <div class="pro-name">小米CC9</div>
                   <div class="pro-price">1799</div>
@@ -102,7 +102,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-6.png" />
+                    <img v-lazy="'/imgs/nav-img/nav-6.png'" />
                   </div>
                   <div class="pro-name">小米CC9</div>
                   <div class="pro-price">1799</div>
@@ -116,7 +116,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-3-1.jpg" />
+                    <img v-lazy="'/imgs/nav-img/nav-3-1.jpg'" />
                   </div>
                   <div class="pro-name">小米壁画电视</div>
                   <div class="pro-price">699</div>
@@ -125,7 +125,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-3-2.jpg" />
+                    <img v-lazy="'/imgs/nav-img/nav-3-2.jpg'" />
                   </div>
                   <div class="pro-name">小米全面电视</div>
                   <div class="pro-price">1999</div>
@@ -134,7 +134,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-3-3.png" />
+                    <img v-lazy="'/imgs/nav-img/nav-3-3.png'" />
                   </div>
                   <div class="pro-name">小米壁画电视</div>
                   <div class="pro-price">699</div>
@@ -143,7 +143,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-3-4.jpg" />
+                    <img v-lazy="'/imgs/nav-img/nav-3-4.jpg'" />
                   </div>
                   <div class="pro-name">小米壁画电视</div>
                   <div class="pro-price">699</div>
@@ -152,7 +152,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-3-5.jpg" />
+                    <img v-lazy="'/imgs/nav-img/nav-3-5.jpg'" />
                   </div>
                   <div class="pro-name">小米壁画电视</div>
                   <div class="pro-price">699</div>
@@ -161,7 +161,7 @@
               <li class="product">
                 <a herf="" target="_blank">
                   <div class="pro-img">
-                    <img src="/imgs/nav-img/nav-3-6.jpg" />
+                    <img v-lazy="'/imgs/nav-img/nav-3-6.jpg'" />
                   </div>
                   <div class="pro-name">小米壁画电视</div>
                   <div class="pro-price">699</div>
