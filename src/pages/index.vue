@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-09 10:58:33
+ * @LastEditTime: 2022-08-10 14:41:54
 -->
 <template>
   <div class="index">
@@ -156,11 +156,11 @@ export default {
           img: '/imgs/slider/slide-3.jpg',
         },
         {
-          id: '',
+          id: '47',
           img: '/imgs/slider/slide-4.jpg',
         },
         {
-          id: '',
+          id: '48 ',
           img: '/imgs/slider/slide-1.jpg',
         },
       ],

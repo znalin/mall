@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-08 16:59:53
+ * @LastEditTime: 2022-08-10 11:47:09
 -->
 <template>
   <div id="app">
@@ -20,7 +20,27 @@ export default {
       res: {},
     }
   },
-  mounted() {},
+  mounted() {
+    this.getCartCount()
+    this.getUser()
+  },
+  methods: {
+    // 获取用户信息
+    getUser() {
+      this.axios.get('/user').then((res) => {
+        // to-do 保存到vuex里
+        this.$store.dispatch('saveUserName', res.username)
+      })
+    },
+
+    // 获取购物车数量
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then((res) => {
+        // to-do 保存到vuex里
+        this.$store.dispatch('saveCartCount', res)
+      })
+    },
+  },
 }
 </script>
 

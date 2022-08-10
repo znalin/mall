@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-09 17:20:49
+ * @LastEditTime: 2022-08-10 11:43:47
 -->
 <template>
   <div class="header">
@@ -20,7 +20,7 @@
           <a href="javascript:;" v-if="!username" @click="login">登陆</a>
           <a href="javascript:;" v-if="username">我的订单</a>
           <a href="javascript:;" class="my-cart" @click="goToCart"
-            ><span class="icon-cart"></span>购物车</a
+            ><span class="icon-cart"></span>购物车({{ cartCount }})</a
           >
         </div>
       </div>
@@ -185,9 +185,21 @@ export default {
   name: 'nav-header',
   data() {
     return {
-      username: 'jack',
       phoneList: [],
     }
+  },
+  computed: {
+    username() {
+      // 原是放在data里：username：this.$store.state.username
+      // 此时username不可以放在data里，
+      // 因为当页面刷新，app中请求usename是异步，这里获取是同步，先渲染
+      // 再异步加载回数据，所以数据显示不出
+      // 用computed,当数据改变会重新执行，渲染到页面
+      return this.$store.state.username
+    },
+    cartCount() {
+      return this.$store.state.cartCount
+    },
   },
   filters: {
     currency(val) {
