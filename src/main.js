@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-10 10:52:45
+ * @LastEditTime: 2022-08-11 14:15:20
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -58,8 +58,8 @@ axios.interceptors.response.use(function(response){
     // main.js用路由跳时没有用的
     // 因为路由挂载在vue实例中，所以在页面中才可以使用this.$axios.push
     window.location.href = '/#/login'
-
     }
+    return Promise.reject(res); // 在具体请求中会在catch中捕获到错误，如果这里没有返回异常默认是正常，在具体请求中还会进入正常代码执行
    
   }else{
     // 真正报错，可以用UI组件库去弹出错误

@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-11 11:28:02
+ * @LastEditTime: 2022-08-11 11:50:25
 -->
 <template>
   <div id="app">
@@ -35,7 +35,7 @@ export default {
 
     // 获取购物车数量
     getCartCount() {
-      this.axios.get('/carts/products/sum').then((res) => {
+      this.axios.get('/carts/products/sum').then((res = 0) => {
         // to-do 保存到vuex里
         this.$store.dispatch('saveCartCount', res)
       })

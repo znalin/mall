@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-10 15:15:02
+ * @LastEditTime: 2022-08-11 14:18:45
 -->
 <template>
   <div class="index">
@@ -83,7 +83,7 @@
                 <div class="item-info">
                   <h3>{{ i.name }}</h3>
                   <p>{{ i.subtitle }}</p>
-                  <p class="price" @click="addCart">{{ i.price }}元</p>
+                  <p class="price" @click="addCart(i.id)">{{ i.price }}元</p>
                 </div>
               </div>
             </div>
@@ -337,16 +337,19 @@ export default {
           this.phoneList = [res.list?.slice(0, 4), res.list?.slice(4, 8)]
         })
     },
-    addCart() {
-      this.showModal = true
-      // return
-      //   this.axios
-      //     .post('/carts', {
-      //       productId: id,
-      //       selected: true,
-      //     })
-      //     .then(() => {})
-      //     .catch(() => {})
+    addCart(id) {
+      this.axios
+        .post('/carts', {
+          productId: id,
+          selected: true,
+        })
+        .then((res) => {
+          this.showModal = true
+          this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
+        })
+        .catch(() => {
+          this.showModal = true
+        })
     },
     goToCart() {
       this.$router.push('/cart')
