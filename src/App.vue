@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-10 11:47:09
+ * @LastEditTime: 2022-08-11 11:28:02
 -->
 <template>
   <div id="app">
@@ -27,7 +27,7 @@ export default {
   methods: {
     // 获取用户信息
     getUser() {
-      this.axios.get('/user').then((res) => {
+      this.axios.get('/user').then((res = {}) => {
         // to-do 保存到vuex里
         this.$store.dispatch('saveUserName', res.username)
       })

@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-10 14:41:54
+ * @LastEditTime: 2022-08-10 15:15:02
 -->
 <template>
   <div class="index">
@@ -49,7 +49,7 @@
         </div>
         <swiper :options="swiperOption">
           <swiper-slide v-for="item in slideList" :key="item.id">
-            <a :href="'/#/product' + item.id"><img :src="item.img" /></a>
+            <a :href="'/#/product/' + item.id"><img :src="item.img" /></a>
           </swiper-slide>
           <!-- Optional controls -->
           <div class="swiper-pagination" slot="pagination"></div>
