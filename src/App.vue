@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-11 11:50:25
+ * @LastEditTime: 2022-08-12 16:29:52
 -->
 <template>
   <div id="app">
@@ -21,8 +21,12 @@ export default {
     }
   },
   mounted() {
-    this.getCartCount()
-    this.getUser()
+    // 只有页面刷新才调用，如果退出登陆再登陆没有页面刷新这个接口不调用
+    // 刷新的时候需要判断有无token，有才调接口
+    if (this.$cookie.get('userId')) {
+      this.getCartCount()
+      this.getUser()
+    }
   },
   methods: {
     // 获取用户信息

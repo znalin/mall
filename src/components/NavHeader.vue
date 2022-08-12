@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:09:12
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-10 11:43:47
+ * @LastEditTime: 2022-08-12 15:55:30
 -->
 <template>
   <div class="header">
@@ -18,6 +18,7 @@
         <div class="topbar-user">
           <a href="javascript:;" v-if="username">{{ username }}</a>
           <a href="javascript:;" v-if="!username" @click="login">登陆</a>
+          <a href="javascript:;" v-if="username" @click="logout">退出</a>
           <a href="javascript:;" v-if="username">我的订单</a>
           <a href="javascript:;" class="my-cart" @click="goToCart"
             ><span class="icon-cart"></span>购物车({{ cartCount }})</a
@@ -181,6 +182,8 @@
   </div>
 </template>
 <script>
+import { Message } from 'element-ui'
+
 export default {
   name: 'nav-header',
   data() {
@@ -209,6 +212,10 @@ export default {
   },
   mounted() {
     this.getProductList()
+    // 如果是从登陆页跳过来就调这个接口
+    if (this.$route.params && this.$route.params.from == 'login') {
+      this.getCartCount()
+    }
   },
   methods: {
     // 获取头部数据
@@ -226,11 +233,32 @@ export default {
     },
     // 跳转到购物车
     goToCart() {
+      Message.info('成功跳转到购物车')
       this.$router.push('/cart')
     },
     // 跳转到登陆页
     login() {
       this.$router.push('/login')
+    },
+    // 获取购物车数量
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then((res = 0) => {
+        // to-do 保存到vuex里
+        this.$store.dispatch('saveCartCount', res)
+      })
+    },
+    // 退出
+    logout() {
+      this.axios.post('/user/logout').then(() => {
+        this.$message.success('退出成功')
+        // userId清空
+        this.$cookie.set('userId', '', { expires: '-1' })
+        // store里保存的清空
+        this.$store.dispatch('saveUserName', '')
+        this.$store.dispatch('saveCartCount', 0)
+        // 跳转到登陆页
+        this.$router.push('/login')
+      })
     },
   },
 }

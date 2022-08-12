@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-11 14:15:20
+ * @LastEditTime: 2022-08-12 11:00:31
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -13,6 +13,8 @@ import VueAxios from 'vue-axios'
 import Vant,{Lazyload} from 'vant';
 import VueCookie from 'vue-cookie'
 import store from './store'
+import { Message } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import 'vant/lib/index.css'
 Vue.use(Vant);
 Vue.use(Lazyload,
@@ -63,7 +65,8 @@ axios.interceptors.response.use(function(response){
    
   }else{
     // 真正报错，可以用UI组件库去弹出错误
-    alert(res.msg)
+    // alert(res.msg)
+    Message.warning(res.msg)
     // 抛出错误
     return Promise.reject(res);
 
@@ -75,6 +78,8 @@ Vue.config.productionTip = false
 // 而不是每个页面都要独自引入，再使用
 Vue.use(VueAxios,axios)
 Vue.use(VueCookie)
+Vue.use(Message)
+Vue.prototype.$message = Message
 new Vue({
   store,
   router,
