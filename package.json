@@ -16,6 +16,7 @@
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.0.4",
     "vue-axios": "^3.4.1",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.5.4",
     "vuex": "^3.6.2"
   },
@@ -30,6 +31,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "mockjs": "^1.1.0",
     "node-sass": "^7.0.1",
+    "qrcode": "^1.5.1",
     "sass-loader": "^8.0.2",
     "swiper": "^5.3.6",
     "vue-cookie": "^1.1.4",

@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 09:03:02
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-12 11:00:31
+ * @LastEditTime: 2022-08-15 11:10:18
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -47,6 +47,7 @@ axios.defaults.timeout = 8000
 
 // 响应错误拦截
 axios.interceptors.response.use(function(response){
+  // 业务错误拦截
   let res = response.data;
   // 获取路径
   let path = location.hash;
@@ -71,6 +72,13 @@ axios.interceptors.response.use(function(response){
     return Promise.reject(res);
 
   }
+
+},
+// 服务器错误拦截
+(error)=>{
+let res = error.response;
+Message.warning(res.data.message);
+return Promise.reject(error);
 
 })
 Vue.config.productionTip = false
