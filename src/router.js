@@ -3,7 +3,7 @@
  * @Author: znalin
  * @Date: 2022-07-13 15:06:18
  * @LastEditors: znalin
- * @LastEditTime: 2022-08-15 16:23:18
+ * @LastEditTime: 2022-08-16 08:58:36
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -39,11 +39,11 @@ export default new Router({
       name: 'login',
       component: () => import('./pages/login.vue')
     },
-    {
-      path: '/register',
-      name: 'register',
-      component: () => import('./pages/register.vue')
-    },
+    // {
+    //   path: '/register',
+    //   name: 'register',
+    //   component: () => import('./pages/register.vue')
+    // },
     {
       path: '/cart',
       name: 'cart',
